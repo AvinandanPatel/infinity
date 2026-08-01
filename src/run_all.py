@@ -28,18 +28,29 @@ def main() -> None:
     OUTPUTS.mkdir(exist_ok=True)
     
     import subprocess
-    notebook_path = REPO_ROOT / "Data_Analysis.ipynb"
+    cleaning_notebook = REPO_ROOT / "Cleaning_PD.ipynb"
+    analysis_notebook = REPO_ROOT / "Data_Analysis.ipynb"
     
-    print(f"Executing {notebook_path.name} to reproduce outputs...")
-    
+    print(f"Executing {cleaning_notebook.name} to reproduce merged data...")
     try:
         subprocess.run([
             "jupyter", "nbconvert", "--to", "notebook", "--execute",
-            "--inplace", str(notebook_path)
+            "--inplace", str(cleaning_notebook)
+        ], check=True)
+        print(f"{cleaning_notebook.name} executed successfully. Merged data saved.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing cleaning notebook: {e}")
+        raise
+
+    print(f"Executing {analysis_notebook.name} to reproduce outputs...")
+    try:
+        subprocess.run([
+            "jupyter", "nbconvert", "--to", "notebook", "--execute",
+            "--inplace", str(analysis_notebook)
         ], check=True)
         print("Execution complete. Outputs reproduced successfully.")
     except subprocess.CalledProcessError as e:
-        print(f"Error executing notebook: {e}")
+        print(f"Error executing analysis notebook: {e}")
         raise
 
 
