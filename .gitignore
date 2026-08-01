@@ -19,3 +19,4 @@ renv/library/
 # student assessment records. Keep all provided and derived data under data/.
 data/*
 my_practice/
+secondary-dataset/

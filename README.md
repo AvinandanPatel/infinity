@@ -1,6 +1,6 @@
 # Team Name: Infinity
 
-Replace this README with a short description of your team and solution.
+This repository contains Team Infinity's data analysis, predictive modeling, and policy recommendations for the Datathon.
 
 ## Team
 
@@ -31,8 +31,9 @@ may be disqualified.
 | `report.pdf` | Main findings report (replace the placeholder) |
 | `slides.pptx` | Your filled-in 12-slide solution deck |
 | `docs/policy_note.pdf` | Recommendations note |
-| `src/run_all.py` or `src/run_all.R` | Single entry point. Running this reproduces everything in `outputs/` |
-| `requirements.txt` or `renv.lock` | Packages needed to run your entry point (Python / R) |
+| `src/run_all.py` | Single entry point. Running this reproduces everything in `outputs/` by executing our main notebook |
+| `requirements.txt` | Python packages needed to run our analysis |
+| `Data_Analysis.ipynb` | Our main Jupyter Notebook containing the data analysis and modeling |
 | `data/` | Where the organizer dataset goes. Git-ignored, never commit data |
 | `manifest.yml` | Lists every file your submission produces |
 | `claims.json` | Every factual or numeric claim in your report, with how it can be checked |

@@ -26,14 +26,21 @@ OUTPUTS = REPO_ROOT / "outputs"
 
 def main() -> None:
     OUTPUTS.mkdir(exist_ok=True)
-    # Replace the body below with your pipeline: load data, analyze, write outputs.
-    #
-    # Example:
-    #   import pandas as pd
-    #   df = pd.read_excel(DATA_DIR / "GPContest_Grade_4_2024-25.xlsx")
-    #   result = analyze(df)
-    #   result.to_csv(OUTPUTS / "tables" / "example_table.csv", index=False)
-    raise NotImplementedError("Replace this with your team's analysis pipeline.")
+    
+    import subprocess
+    notebook_path = REPO_ROOT / "Data_Analysis.ipynb"
+    
+    print(f"Executing {notebook_path.name} to reproduce outputs...")
+    
+    try:
+        subprocess.run([
+            "jupyter", "nbconvert", "--to", "notebook", "--execute",
+            "--inplace", str(notebook_path)
+        ], check=True)
+        print("Execution complete. Outputs reproduced successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing notebook: {e}")
+        raise
 
 
 if __name__ == "__main__":
